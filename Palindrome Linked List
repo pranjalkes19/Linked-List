@@ -1,0 +1,31 @@
+/**
+ * class LLNode {
+ *     public:
+ *         int val;
+ *         LLNode *next;
+ * };
+ */
+bool solve(LLNode* node) {
+    if(node!=NULL && node->next!=NULL){
+    stack<int> stk;
+    LLNode* slow=node;LLNode* fast=node;
+    while(fast!=NULL && fast->next!=NULL){
+        stk.push(slow->val);
+        slow=slow->next;
+        fast=fast->next->next;
+        if(fast!=NULL && fast->next==NULL){
+            slow=slow->next;
+        }
+    }
+    while(slow!=NULL){
+        if(stk.top()!=slow->val){
+            return false;
+        }
+        stk.pop();
+        slow=slow->next;
+    }
+    return true;
+    }
+    else
+    return true;
+}
